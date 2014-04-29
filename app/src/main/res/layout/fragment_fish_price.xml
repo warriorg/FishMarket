@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context="com.fish.app.fragment.FishPriceFragment">
 
     <TextView
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:textSize="16pt"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"/>
     
     <LinearLayout
@@ -21,6 +22,7 @@
     <ListView
         android:id="@+id/fish_price_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

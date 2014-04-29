@@ -40,4 +40,5 @@
     <color name="bg_dark_grey_end">#dcdcdc</color>
     <color name="bg_white_white_start">#FFFFFFFF</color>
     <color name="bg_white_white_end">#FFFFFFFF</color>
+    <color name="bg_light_grey">#ffd3d3d3</color>
 </resources>

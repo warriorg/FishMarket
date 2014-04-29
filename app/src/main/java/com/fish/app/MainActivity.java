@@ -9,10 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Window;
 
 import com.fish.app.fragment.AccountFragment;
 import com.fish.app.fragment.FishMarketFragment;
 import com.fish.app.fragment.FishPriceFragment;
+import com.fish.app.fragment.SettingFragment;
 import com.fish.entity.FishEntity;
 
 import java.util.ArrayList;
@@ -31,13 +33,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate");
-
         mList = new ArrayList<Fragment>();
         mFishMarket = FishMarketFragment.newInstance();
         mList.add(mFishMarket);
 
         AccountFragment mAccount = AccountFragment.newInstance();
         mList.add(mAccount);
+
+        SettingFragment mSetting = SettingFragment.newInstance();
+        mList.add(mSetting);
 
         mFishPrice = FishPriceFragment.newInstance();
 

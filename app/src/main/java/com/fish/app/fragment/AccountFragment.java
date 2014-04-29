@@ -1,12 +1,15 @@
 package com.fish.app.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,7 +23,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 //我的账户
-public class AccountFragment extends Fragment implements OrderAdapter.OnOrderChangeListener {
+public class AccountFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private OrderAdapter mAdapter;
@@ -48,7 +51,6 @@ public class AccountFragment extends Fragment implements OrderAdapter.OnOrderCha
 
         Collections.sort(DummyDb.orderList, comparator);
         mAdapter = new OrderAdapter(getActivity(), DummyDb.orderList);
-        mAdapter.setOnOrderChangeListener(this);
     }
 
     @Override
@@ -59,15 +61,36 @@ public class AccountFragment extends Fragment implements OrderAdapter.OnOrderCha
         mBalance.setText(String.format("%.2f$",accountBalance));
         mListView = (ListView)view.findViewById(R.id.account_order_list);
         mListView.setAdapter(mAdapter);
+        mListView.setOnItemClickListener(this);
         return view;
     }
 
-    @Override
-    public void orderChange(OrderEntity orderEntity) {
-        orderEntity.setStatus(0);
-        mAdapter.notifyDataSetChanged();
 
-        accountBalance -= orderEntity.getPrice();
-        mBalance.setText(String.format("%.2f$",accountBalance));
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+        final OrderEntity orderEntity = DummyDb.orderList.get(position);
+        if(orderEntity.getStatus() == 0)
+            return;
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setTitle("通知")
+                .setMessage("请确认下单，保证金将从你的账户扣除")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        orderEntity.setStatus(0);
+                        accountBalance -= orderEntity.getPrice();
+                        mBalance.setText(String.format("%.2f$",accountBalance));
+                        mAdapter.notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        dialog.show();
     }
 }

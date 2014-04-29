@@ -23,7 +23,7 @@ android {
         key {
             storeFile file("android.keystore");
             storePassword "warrior.gao"
-            keyAlias "bone"
+            keyAlias "android.keystore"
             keyPassword "warrior.gao"
         }
     }

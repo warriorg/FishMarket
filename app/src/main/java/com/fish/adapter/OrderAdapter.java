@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fish.app.MainActivity;
@@ -32,17 +33,12 @@ public class OrderAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
 
-    public OnOrderChangeListener mListener;
-
     public OrderAdapter(Context context, List<OrderEntity> list) {
         mContext = context;
         mList = list;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
 
-    public void setOnOrderChangeListener(OnOrderChangeListener listener){
-        mListener = listener;
-    }
 
     @Override
     public int getCount() {
@@ -69,10 +65,12 @@ public class OrderAdapter extends BaseAdapter {
         TextView price = (TextView)convertView.findViewById(R.id.order_fish_price);
         TextView weight = (TextView)convertView.findViewById(R.id.order_store_weight);
         TextView orderDt = (TextView)convertView.findViewById(R.id.order_dt);
-        Button button = (Button)convertView.findViewById(R.id.order_submit);
+        ImageView imageView = (ImageView)convertView.findViewById(R.id.order_status);
         final OrderEntity fe = mList.get(position);
         if(fe.getStatus() == 0) {
-            button.setVisibility(View.GONE);
+            imageView.setImageResource(R.drawable.ic_finish);
+        } else {
+            imageView.setImageResource(R.drawable.ic_check);
         }
         name.setText(fe.getName());
 
@@ -80,36 +78,8 @@ public class OrderAdapter extends BaseAdapter {
         weight.setText(String.format("%.2fKG", fe.getWeight()));
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         orderDt.setText(sf.format(fe.getOrderDt()));
-        button.setTag(fe);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                AlertDialog dialog = new AlertDialog.Builder(mContext)
-                        .setTitle("通知")
-                        .setMessage("请确认下单，保证金将从你的账户扣除")
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                OrderEntity orderEntity = (OrderEntity)v.getTag();
-                                mListener.orderChange(orderEntity);
-                                dialog.dismiss();
-                            }
-                        })
-                        .create();
-                dialog.show();
-            }
-        });
 
         return convertView;
     }
 
-    public interface OnOrderChangeListener{
-        void orderChange(OrderEntity orderEntity);
-    }
 }

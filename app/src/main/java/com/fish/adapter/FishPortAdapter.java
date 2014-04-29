@@ -1,6 +1,7 @@
 package com.fish.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,12 @@ public class FishPortAdapter extends BaseAdapter {
         }
 
         TextView name = (TextView) convertView.findViewById(R.id.fish_port_name);
+        Drawable drawable;
+        if(position % 2 == 0)
+            drawable = mContext.getResources().getDrawable(R.drawable.ic_messages);
+        else
+            drawable = mContext.getResources().getDrawable(R.drawable.ic_refresh);
+        name.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null,null);
         TextView price = (TextView) convertView.findViewById(R.id.fish_price);
         FishEntity fe = list.get(position);
         name.setText(fe.getArea());

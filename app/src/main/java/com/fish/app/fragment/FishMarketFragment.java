@@ -6,31 +6,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
 
 import com.fish.adapter.FishAdapter;
 import com.fish.app.R;
 import com.fish.entity.DummyDb;
-import com.fish.entity.FishEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import roboguice.fragment.RoboFragment;
-import roboguice.inject.InjectView;
 
 /**
  * A fragment representing a list of Items.
- * <p />
+ * <p/>
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
- * <p />
+ * <p/>
  * Activities containing this fragment MUST implement the {@link }
  * interface.
  */
@@ -50,18 +38,18 @@ public class FishMarketFragment extends Fragment implements ListView.OnItemClick
      */
     private FishAdapter mAdapter;
 
-    // TODO: Rename and change types of parameters
-    public static FishMarketFragment newInstance() {
-        FishMarketFragment fragment = new FishMarketFragment();
-
-        return fragment;
-    }
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public FishMarketFragment() {
+    }
+
+    // TODO: Rename and change types of parameters
+    public static FishMarketFragment newInstance() {
+        FishMarketFragment fragment = new FishMarketFragment();
+
+        return fragment;
     }
 
     @Override
@@ -93,7 +81,7 @@ public class FishMarketFragment extends Fragment implements ListView.OnItemClick
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                + " must implement OnFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -113,15 +101,15 @@ public class FishMarketFragment extends Fragment implements ListView.OnItemClick
 
 
     /**
-    * This interface must be implemented by activities that contain this
-    * fragment to allow an interaction in this fragment to be communicated
-    * to the activity and potentially other fragments contained in that
-    * activity.
-    * <p>
-    * See the Android Training lesson <a href=
-    * "http://developer.android.com/training/basics/fragments/communicating.html"
-    * >Communicating with Other Fragments</a> for more information.
-    */
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
     public interface OnFragmentInteractionListener {
 
         public void onFragmentInteraction(int id);

@@ -1,6 +1,7 @@
 package com.fish.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,12 @@ public class StoreAdapter extends BaseAdapter {
         }
 
         TextView name = (TextView)convertView.findViewById(R.id.store_name);
+        Drawable drawable;
+        if(position % 2 == 0)
+            drawable = mContext.getResources().getDrawable(R.drawable.ic_messages);
+        else
+            drawable = mContext.getResources().getDrawable(R.drawable.ic_refresh);
+        name.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null,null);
         TextView price = (TextView)convertView.findViewById(R.id.fish_price);
         TextView weight = (TextView)convertView.findViewById(R.id.store_weight);
         StoreEntity fe = list.get(position);

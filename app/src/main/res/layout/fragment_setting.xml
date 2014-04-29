@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.fish.app.fragment.SettingFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_corner_round"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight=".9"
+            android:text="接受推送消息"/>
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight=".1"
+            android:layout_gravity="right|center_horizontal" />
+    </LinearLayout>
+        <View
+
+            android:layout_width="match_parent"
+            android:background="@color/bg_light_grey"
+            android:layout_height="1dp"
+            android:layout_below="@+id/store_area_name" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight=".9"
+            android:text="2G下不下载图片"/>
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight=".1"
+            android:layout_gravity="right|center_horizontal" />
+    </LinearLayout>
+        <View
+
+            android:layout_width="match_parent"
+            android:background="@color/bg_light_grey"
+            android:layout_height="1dp"
+            android:layout_below="@+id/store_area_name" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:layout_weight=".9"
+            android:text="夜间免打扰开启"/>
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight=".1"
+            android:layout_gravity="right|center_horizontal" />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

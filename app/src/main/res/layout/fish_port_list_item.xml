@@ -4,11 +4,13 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:background="@android:color/white"
+    android:padding="15dp"
     android:weightSum="1">
 
     <TextView
         android:id="@+id/fish_port_name"
+        android:drawableLeft="@drawable/ic_refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"/>
@@ -19,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:gravity="right|center_vertical"
-        android:drawablePadding="20dp"
+        android:drawablePadding="5dp"
         android:drawableRight="@drawable/ic_find_next_holo_light"/>
 </LinearLayout>
